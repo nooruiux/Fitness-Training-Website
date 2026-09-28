@@ -5,6 +5,7 @@ import { ShapeBody } from "@/components/sections/ShapeBody";
 import { Membership } from "@/components/sections/Membership";
 import { Testimonial } from "@/components/sections/Testimonial";
 import { CTA } from "@/components/sections/CTA";
+import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Testimonial />
         <CTA />
       </main>
+      <Footer />
     </>
   );
 }
