@@ -2,6 +2,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { ShapeBody } from "@/components/sections/ShapeBody";
+import { Membership } from "@/components/sections/Membership";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <WhyUs />
         <ShapeBody />
+        <Membership />
       </main>
     </>
   );
