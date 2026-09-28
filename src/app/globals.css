@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — sourced from Figma variables (get_variable_defs on 3:2630)
+ * plus the raw values the design uses outside its variable set.
+ * Figma letter-spacing "0.5" is 0.5% of the font size → 0.005em.
+ */
+@theme {
+  /* Brand (Figma variables) */
+  --color-primary: #00ffff;
+  --color-secondary: #7f00ff;
+  --color-grey-700: #111212;
+  --color-grey-600: #2e3030;
+  --color-grey-200: #b9bfbf;
+  --color-white: #fefefe;
+  --color-black: #000000;
+  --color-neutral-8: #fcfcfd;
+  --color-success: #45b26b; /* Primary/4 */
+  --color-violet: #9757d7; /* Primary/2 */
+  --color-blue: #3772ff; /* Secondary/1 */
+
+  /* Surfaces (raw fills used in the Figma frame) */
+  --color-surface: #1a1a1a;
+  --color-surface-raised: #202020;
+  --color-surface-quote: #242424;
+  --color-toggle-track: #454545;
+  --color-card-fade: #1b1b1b; /* trainer card gradient end */
+
+  /* CTA gradient stops */
+  --color-cta-pink: #f28cdf;
+  --color-cta-cyan: #32efdf;
+  --color-cta-lilac: #eca0ff;
+
+  /* Fonts */
+  --font-display: var(--font-clash-grotesk), "Clash Grotesk", ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-work-sans), ui-sans-serif, sans-serif;
+  --font-label: var(--font-plus-jakarta), ui-sans-serif, sans-serif;
+
+  /* Letter-spacing used across every Figma text style */
+  --tracking-figma: 0.005em;
+
+  /* Type scale */
+  --text-display: 3.5rem; /* 56 */
+  --text-display--line-height: 4.1875rem; /* 67 */
+  --text-display--letter-spacing: 0.005em;
+  --text-h2: 3rem; /* 48 */
+  --text-h2--line-height: 3.5rem; /* 56 */
+  --text-h2--letter-spacing: 0.005em;
+  --text-h3: 2.5rem; /* 40 */
+  --text-h3--line-height: 3rem; /* 48 */
+  --text-h3--letter-spacing: 0.005em;
+  --text-h4: 1.75rem; /* 28 */
+  --text-h4--line-height: 2.25rem; /* 36 */
+  --text-h4--letter-spacing: 0.005em;
+  --text-h5: 1.5rem; /* 24 */
+  --text-h5--line-height: 2rem; /* 32 */
+  --text-h5--letter-spacing: 0.005em;
+  --text-h6: 1.25rem; /* 20 */
+  --text-h6--line-height: 1.75rem; /* 28 */
+  --text-h6--letter-spacing: 0.005em;
+  --text-card-title: 1.2642rem; /* 20.227 — "Book a class" card */
+  --text-card-title--line-height: 1.5803rem; /* 25.284 */
+  --text-card-title--letter-spacing: 0.005em;
+  --text-body-xl: 1.125rem; /* 18 */
+  --text-body-xl--line-height: 1.75rem; /* 28 */
+  --text-body-xl--letter-spacing: 0.005em;
+  --text-body-lg: 1rem; /* 16 */
+  --text-body-lg--line-height: 1.625rem; /* 26 */
+  --text-body-lg--letter-spacing: 0.005em;
+  --text-body-md: 0.875rem; /* 14 */
+  --text-body-md--line-height: 1.5rem; /* 24 */
+  --text-body-md--letter-spacing: 0.005em;
+  --text-label-md: 0.875rem; /* 14, Inter Medium 14/20 */
+  --text-label-md--line-height: 1.25rem;
+  --text-label-md--letter-spacing: 0.005em;
+  --text-body-sm: 0.75rem; /* 12 */
+  --text-body-sm--line-height: 1.25rem; /* 20 */
+  --text-body-sm--letter-spacing: 0.005em;
+  --text-button-lg: 1rem; /* 16, Plus Jakarta SemiBold, line-height normal */
+  --text-button-lg--line-height: normal;
+  --text-button-lg--letter-spacing: 0.005em;
+  --text-button-md: 0.875rem; /* 14 */
+  --text-button-md--line-height: normal;
+  --text-button-md--letter-spacing: 0.005em;
+  --text-footer-heading: 1rem; /* 16, Inter Bold, 1.5 */
+  --text-footer-heading--line-height: 1.5;
+  --text-footer-heading--letter-spacing: 0.005em;
+
+  /* Radii */
+  --radius-option: 0.6321rem; /* 10.114 */
+  --radius-glass: 0.9482rem; /* 15.171 */
+  --radius-arrow: 0.1736rem; /* 2.778 */
+
+  /* Effects */
+  --blur-glass: 12px;
+  --shadow-none: 0 0 #0000;
+
+  /* Layout */
+  --container-page: 75rem; /* 1200 */
+  --container-testimonial: 75.375rem; /* 1206 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-grey-700);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-figma);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility mask-hero-notch {
+  mask-image: url("/masks/hero-notch.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+@utility mask-cta-notch {
+  mask-image: url("/masks/cta-notch.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+@utility bg-cta-gradient {
+  /* Figma: linear gradient (8,9) → (1066,356) inside the 1200×372 CTA */
+  background-image: linear-gradient(
+    108deg,
+    var(--color-cta-pink) 0%,
+    var(--color-cta-cyan) 50%,
+    var(--color-cta-lilac) 100%
+  );
+}
+
+@utility bg-noise {
+  background-image: url("/images/noise.webp");
+  background-repeat: repeat;
+}
