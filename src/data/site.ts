@@ -1,6 +1,6 @@
 export const site = {
   name: "Gymnastic",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fitness-training-website.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fitness-training-website-bay.vercel.app",
   title: "Gymnastic — Fitness Training, Classes & Memberships",
   description:
     "Gymnastic is a top-tier fitness club with experienced trainers, modern equipment and flexible memberships. Book a class and start your training today.",
