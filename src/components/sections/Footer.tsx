@@ -11,7 +11,8 @@ export function Footer() {
   return (
     <footer id="contact" className="scroll-mt-28 bg-primary/4 pt-14 pb-7">
       <Container className="flex flex-col gap-10">
-        <div className="grid gap-10 md:grid-cols-2 xl:flex xl:w-302.25 xl:-ml-0.25 xl:gap-32.5">
+        {/* 1 column → 2×2 from 640 → 4 columns from 1024 (Figma's fixed 130px gaps at 1280+). */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_auto_auto_auto] lg:gap-x-12 xl:flex xl:w-302.25 xl:-ml-0.25 xl:gap-32.5">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-6">
               <a href="#home" className="flex items-center gap-2 self-start rounded-full" aria-label={`${site.name} — back to top`}>
@@ -88,7 +89,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-6 xl:pl-1.25">
           <Image src="/decor/footer-line.svg" alt="" width={1200} height={1} className="h-px w-full" />
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-body-lg text-white/80">
+          <div className="flex flex-col gap-2 text-body-lg text-white/80 sm:flex-row sm:flex-wrap sm:gap-x-8">
             <p>
               © {year} {site.name}
             </p>
