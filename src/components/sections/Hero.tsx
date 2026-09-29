@@ -9,7 +9,7 @@ const avatarOffsets = ["left-0", "left-8.5", "left-18", "left-27"];
 function TrainersBadge() {
   const { avatars, count, label } = hero.trainers;
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
       <div className="relative h-14 w-50 shrink-0">
         {avatars.map((avatar, i) => (
           <Image
@@ -35,11 +35,11 @@ export function Hero() {
   return (
     <section id="home" aria-labelledby="hero-heading" className="scroll-mt-28 pt-8 pb-20 xl:pt-16 xl:pb-29">
       <Container>
-        <div className="relative z-10 flex flex-col gap-6 xl:flex-row xl:gap-21.75">
-          <h1 id="hero-heading" className="font-display text-h3 font-medium text-white md:text-display xl:w-142.75">
+        <div className="relative z-10 flex flex-col gap-6 short:flex-row short:gap-8 xl:flex-row xl:gap-21.75">
+          <h1 id="hero-heading" className="font-display text-h3 font-medium text-white short:w-1/2 short:shrink-0 md:text-display xl:w-142.75">
             {hero.heading}
           </h1>
-          <div className="flex flex-col items-start gap-6 xl:w-115.25 xl:pt-1.5">
+          <div className="flex flex-col items-start gap-6 short:min-w-0 short:flex-1 xl:w-115.25 xl:pt-1.5">
             <p className="text-body-xl text-white">{hero.text}</p>
             <Button href={hero.cta.href}>{hero.cta.label}</Button>
           </div>

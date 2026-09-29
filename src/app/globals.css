@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Phones in landscape: short viewports where stacked layouts push CTAs below the fold. */
+@custom-variant short (@media (orientation: landscape) and (max-height: 32rem) and (width < 64rem));
+
 /*
  * Design tokens — sourced from Figma variables (get_variable_defs on 3:2630)
  * plus the raw values the design uses outside its variable set.
