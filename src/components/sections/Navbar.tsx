@@ -150,7 +150,7 @@ export function Navbar() {
 
       <div
         className={cn(
-          "fixed inset-0 z-50 bg-grey-700/70 backdrop-blur-sm transition-opacity lg:hidden",
+          "fixed inset-0 z-50 touch-none bg-grey-700/70 backdrop-blur-sm transition-opacity lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden
@@ -164,7 +164,8 @@ export function Navbar() {
         aria-label="Menu"
         inert={!open}
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-full max-w-80 flex-col gap-8 bg-surface p-6 transition-transform duration-300 lg:hidden",
+          "fixed top-0 right-0 z-50 flex h-dvh w-full max-w-80 flex-col gap-8 overflow-y-auto overscroll-contain bg-surface p-6 transition-transform duration-300 lg:hidden",
+          "pt-[max(1.5rem,env(safe-area-inset-top))] pr-[max(1.5rem,env(safe-area-inset-right))] pb-[max(1.5rem,env(safe-area-inset-bottom))]",
           open ? "translate-x-0" : "translate-x-full",
         )}
       >
@@ -183,7 +184,7 @@ export function Navbar() {
           active={active}
           onNavigate={() => setOpen(false)}
           className="flex flex-col gap-2"
-          linkClassName="px-2 py-3 text-body-xl"
+          linkClassName="flex min-h-12 items-center px-2 py-0 text-body-xl"
         />
       </div>
     </header>
