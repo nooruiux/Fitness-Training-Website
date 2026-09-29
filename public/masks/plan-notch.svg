@@ -1,0 +1,9 @@
+<svg width="197" height="72" viewBox="0 0 197 72" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Bottom strip of the Figma plan card (3:2834) around the Join Now notch, as a mask (black = card).
+    Geometry from the Figma path: 165×72 notch with 16px concave top corners, and the feet's 16px
+    convex bottom corners. Origin = 16px left of the notch.
+  -->
+  <path d="M0 0H32A16 16 0 0 0 16 16V56A16 16 0 0 1 0 72Z" fill="#000"/>
+  <path d="M197 0V72A16 16 0 0 1 181 56V16A16 16 0 0 0 165 0Z" fill="#000"/>
+</svg>

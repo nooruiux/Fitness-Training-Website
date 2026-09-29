@@ -28,6 +28,7 @@
   --color-surface-quote: #242424;
   --color-toggle-track: #454545;
   --color-card-fade: #1b1b1b; /* trainer card gradient end */
+  --color-plan-card: rgb(255 255 255 / 0.0384); /* plan card fill: white 24% × 16% fill-opacity */
 
   /* CTA gradient stops */
   --color-cta-pink: #f28cdf;
@@ -189,6 +190,27 @@
 @utility mask-cta-notch {
   mask-image: url("/masks/cta-notch.svg");
   mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+/*
+ * Plan card below 1280px: solid body + a fixed 197×72 notch strip anchored bottom-centre, so the
+ * notch and radii keep their exact Figma pixel size while the card width is fluid.
+ */
+@utility mask-plan-card {
+  mask-image:
+    linear-gradient(#000 0 0), linear-gradient(#000 0 0), linear-gradient(#000 0 0),
+    url("/masks/plan-notch.svg");
+  mask-size:
+    100% calc(100% - 72px),
+    calc(50% - 98px) 72px,
+    calc(50% - 98px) 72px,
+    197px 72px;
+  mask-position:
+    top,
+    left bottom,
+    right bottom,
+    center bottom;
   mask-repeat: no-repeat;
 }
 

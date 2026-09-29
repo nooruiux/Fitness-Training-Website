@@ -13,15 +13,25 @@ function checkIcon(feature: PlanFeature, index: number) {
 
 function PlanCard({ plan }: { plan: Plan }) {
   return (
-    <article className="relative h-118 w-70.5 shrink-0" aria-labelledby={`plan-${plan.name}`}>
+    <article
+      aria-labelledby={`plan-${plan.name}`}
+      className="relative isolate flex h-full w-full max-w-85 flex-col items-center pt-5 xl:block xl:h-118 xl:w-70.5 xl:max-w-none xl:pt-0"
+    >
+      {/* < 1280: fluid-width card body (exact Figma radius + fixed-size notch); the mask only
+          shapes this background layer, so the button inside the notch stays visible. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 rounded-2xl border border-white/4 bg-plan-card mask-plan-card xl:hidden"
+      />
+      {/* ≥ 1280: the original Figma SVG card at its exact 282×472 size. */}
       <Image
         src="/decor/plan-card.svg"
         alt=""
         width={282.483}
         height={472}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 hidden h-full w-full xl:block"
       />
-      <div className="absolute inset-x-0 top-5 flex flex-col items-center gap-5">
+      <div className="flex w-full flex-col items-center gap-5 xl:absolute xl:inset-x-0 xl:top-5">
         <div className="flex w-full flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-2 whitespace-nowrap">
             <h3 id={`plan-${plan.name}`} className="font-display text-h4 font-medium text-white">
@@ -53,14 +63,17 @@ function PlanCard({ plan }: { plan: Plan }) {
           ))}
         </ul>
       </div>
-      <Button
-        size="sm"
-        href={plan.cta.href}
-        className="absolute top-104 left-18.75"
-        aria-label={`${plan.cta.label} — ${plan.name} plan`}
-      >
-        {plan.cta.label}
-      </Button>
+      {/* The 72px notch row: 32px below the list, button centred in the notch (Figma 400→472). */}
+      <div className="mt-auto flex h-18 w-full shrink-0 items-center justify-center pt-8 box-content xl:contents">
+        <Button
+          size="sm"
+          href={plan.cta.href}
+          className="xl:absolute xl:top-104 xl:left-18.75"
+          aria-label={`${plan.cta.label} — ${plan.name} plan`}
+        >
+          {plan.cta.label}
+        </Button>
+      </div>
     </article>
   );
 }
@@ -77,7 +90,8 @@ export function Membership() {
             textClassName="max-w-105.75"
           />
         </Reveal>
-        <Reveal className="flex flex-wrap justify-center gap-6">
+        {/* 1 column < 640, 2×2 from 640, 4 × 282px from 1280. */}
+        <Reveal className="grid w-full grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 xl:w-auto xl:grid-cols-[repeat(4,17.625rem)]">
           {plans.map((plan) => (
             <PlanCard key={plan.name} plan={plan} />
           ))}
