@@ -35,7 +35,7 @@ function useActiveSection() {
 
 function Logo() {
   return (
-    <a href="#home" className="flex shrink-0 items-center gap-2 rounded-full" aria-label={`${site.name} — home`}>
+    <a href="#home" className="tap-target relative flex shrink-0 items-center gap-2 rounded-full" aria-label={`${site.name} — home`}>
       <Image src={site.logo.src} alt="" width={site.logo.width} height={site.logo.height} priority />
       <span className="font-heading text-h5 font-semibold text-white uppercase">{site.name}</span>
     </a>
@@ -64,7 +64,7 @@ function NavLinks({
               onClick={onNavigate}
               aria-current={isActive ? "true" : undefined}
               className={cn(
-                "block rounded-full p-2 text-body-lg transition-colors hover:text-primary",
+                "tap-target relative block rounded-full p-2 text-body-lg transition-colors hover:text-primary",
                 isActive ? "text-primary" : "text-white",
                 linkClassName,
               )}
@@ -137,7 +137,7 @@ export function Navbar() {
           <button
             ref={toggleRef}
             type="button"
-            className="grid size-10 place-items-center rounded-full text-white transition-colors hover:text-primary lg:hidden"
+            className="tap-target relative grid size-10 place-items-center rounded-full text-white transition-colors hover:text-primary lg:hidden"
             aria-label="Open menu"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -173,7 +173,7 @@ export function Navbar() {
           <Logo />
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full text-white transition-colors hover:text-primary"
+            className="tap-target relative grid size-10 place-items-center rounded-full text-white transition-colors hover:text-primary"
             aria-label="Close menu"
             onClick={close}
           >

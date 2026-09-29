@@ -175,6 +175,23 @@
   }
 }
 
+/*
+ * Touch target: an invisible ::after hit area of at least 44×44px centred on the element.
+ * It is absolutely positioned, so the element's visual size, spacing and position are unchanged.
+ * The element itself must be positioned (relative/absolute).
+ */
+@utility tap-target {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+}
+
 /* Container side padding: the gutter, or the device safe area when that is larger. */
 @utility px-gutter {
   padding-left: max(var(--gutter), env(safe-area-inset-left));

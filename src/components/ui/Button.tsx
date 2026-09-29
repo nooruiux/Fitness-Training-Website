@@ -25,7 +25,7 @@ export function Button({ size = "lg", iconSrc, className, children, ...props }: 
   return (
     <a
       className={cn(
-        "group inline-flex shrink-0 items-center justify-center rounded-full border-[1.4px] border-primary bg-primary font-label font-semibold whitespace-nowrap text-grey-700",
+        "group tap-target relative inline-flex shrink-0 items-center justify-center rounded-full border-[1.4px] border-primary bg-primary font-label font-semibold whitespace-nowrap text-grey-700",
         "transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0",
         "focus-visible:outline-white",
         spec.className,

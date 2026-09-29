@@ -32,15 +32,17 @@ export function Toggle({ label, defaultChecked = true, onChange, className }: To
         aria-checked={checked}
         aria-labelledby={labelId}
         onClick={toggle}
-        className="relative h-6 w-11 shrink-0 cursor-pointer overflow-hidden rounded-full bg-toggle-track transition-colors hover:bg-grey-600"
+        className="tap-target relative h-6 w-11 shrink-0 cursor-pointer rounded-full bg-toggle-track transition-colors hover:bg-grey-600"
       >
-        <span
-          aria-hidden
-          className={cn(
-            "absolute top-0 left-0 size-6 rounded-full border-2 border-primary bg-primary transition-transform duration-200",
-            checked ? "translate-x-5" : "translate-x-0",
-          )}
-        />
+        {/* The track clips the knob here, so the button itself can carry an unclipped 44px hit area. */}
+        <span aria-hidden className="absolute inset-0 overflow-hidden rounded-full">
+          <span
+            className={cn(
+              "absolute top-0 left-0 size-6 rounded-full border-2 border-primary bg-primary transition-transform duration-200",
+              checked ? "translate-x-5" : "translate-x-0",
+            )}
+          />
+        </span>
       </button>
     </div>
   );

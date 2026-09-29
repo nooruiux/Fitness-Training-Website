@@ -32,7 +32,7 @@ function ArrowButton({
       aria-label={direction === "prev" ? "Previous testimonial" : "Next testimonial"}
       className={cn(
         // Hidden below md: phones swipe and use the dots.
-        "group hidden size-10 shrink-0 cursor-pointer place-items-center rounded-arrow disabled:cursor-not-allowed md:grid",
+        "group tap-target relative hidden size-10 shrink-0 cursor-pointer place-items-center rounded-arrow disabled:cursor-not-allowed md:grid",
         direction === "next" && "rotate-180",
       )}
     >
@@ -122,7 +122,7 @@ export function Carousel({ label, slides, className, slideClassName }: CarouselP
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === selected ? "true" : undefined}
             className={cn(
-              "size-3 cursor-pointer rounded-full transition-colors",
+              "tap-target relative size-3 cursor-pointer rounded-full transition-colors",
               i === selected ? "bg-secondary" : "bg-grey-600 hover:bg-grey-200",
             )}
           />

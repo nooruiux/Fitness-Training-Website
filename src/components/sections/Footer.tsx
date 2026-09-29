@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { footer } from "@/data/footer";
 import { site } from "@/data/site";
 
-const linkClass = "rounded-sm transition-colors hover:text-primary";
+const linkClass = "tap-target relative rounded-sm transition-colors hover:text-primary";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_auto_auto_auto] lg:gap-x-12 xl:flex xl:w-302.25 xl:-ml-0.25 xl:gap-32.5">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-6">
-              <a href="#home" className="flex items-center gap-2 self-start rounded-full" aria-label={`${site.name} — back to top`}>
+              <a href="#home" className="tap-target relative flex items-center gap-2 self-start rounded-full" aria-label={`${site.name} — back to top`}>
                 <Image src={site.logo.src} alt="" width={site.logo.width} height={site.logo.height} />
                 <span className="font-heading text-h5 font-semibold text-white uppercase">{site.name}</span>
               </a>
@@ -29,7 +29,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${site.name} on ${social.label}`}
-                    className="block rounded-full transition-opacity hover:opacity-70"
+                    className="tap-target relative block rounded-full transition-opacity hover:opacity-70"
                   >
                     <Image src={social.icon} alt="" width={32} height={32} />
                   </a>
