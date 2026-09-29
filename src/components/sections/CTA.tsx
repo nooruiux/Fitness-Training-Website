@@ -14,7 +14,7 @@ export function CTA() {
           notch mask scales uniformly; the text keeps its own fluid type sizes.
         */}
         <Reveal className="relative flex flex-col items-center gap-8 overflow-hidden rounded-4xl px-6 pt-10 md:px-12 lg:block lg:aspect-[1200/372] lg:overflow-visible lg:rounded-none lg:p-0 xl:h-93 xl:aspect-auto">
-          <div aria-hidden className="bg-cta-gradient absolute inset-0 lg:mask-cta-notch" />
+          <div aria-hidden className="bg-cta-gradient absolute inset-0 mask-cta-notch-mobile lg:mask-cta-notch" />
 
           <div className="relative flex flex-col items-start gap-10 self-stretch lg:absolute lg:top-1/2 lg:left-[8%] lg:w-1/2 lg:-translate-y-1/2 xl:top-20.5 xl:left-24 xl:w-auto xl:translate-y-0">
             <div className="flex flex-col gap-5 text-grey-700">
@@ -53,8 +53,8 @@ export function CTA() {
             </div>
           </div>
 
-          {/* Star in the bottom-right notch (1104/1200, 314/372), from lg. */}
-          <div aria-hidden className="absolute hidden lg:top-[84.41%] lg:left-[92%] lg:block lg:aspect-square lg:w-[4.1667%] xl:top-78.5 xl:left-276 xl:size-12.5">
+          {/* Star in the bottom-right notch: centred in the 96 × 64 notch below lg; 1104/1200, 314/372 from lg. */}
+          <div aria-hidden className="absolute right-7 bottom-3 size-10 lg:top-[84.41%] lg:right-auto lg:bottom-auto lg:left-[92%] lg:aspect-square lg:size-auto lg:w-[4.1667%] xl:top-78.5 xl:left-276 xl:size-12.5">
             <Image src="/decor/cta-star.svg" alt="" width={43.3013} height={50} className="mx-auto h-full w-auto" />
           </div>
         </Reveal>

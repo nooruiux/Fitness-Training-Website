@@ -1,0 +1,8 @@
+<svg width="120" height="88" viewBox="0 0 120 88" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Bottom-right corner piece of the CTA card (Figma 3:3105) below 1024px: a 96 × 64 star notch
+    with 24px convex/concave curves, same shape language as desktop. Fixed pixel size, anchored
+    bottom-right, so the card height can follow its text without distorting the curves.
+  -->
+  <path d="M0 0H120A24 24 0 0 1 96 24H48A24 24 0 0 0 24 48V64A24 24 0 0 1 0 88Z" fill="#000"/>
+</svg>

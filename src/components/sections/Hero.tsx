@@ -3,14 +3,19 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { hero } from "@/data/hero";
 
-/** Avatar offsets from Figma (3:2665): 0, 34, 72, 108, then the count disc at 144. */
-const avatarOffsets = ["left-0", "left-8.5", "left-18", "left-27"];
+/**
+ * Avatar offsets from Figma (3:2665): 0, 34, 72, 108, then the count disc at 144.
+ * Every badge size is "Figma px × --bu": --bu is 1px from lg (exact Figma badge) and scales with
+ * the image below lg, so the badge always nests inside the mobile notch. Text never drops below 14px.
+ */
+const avatarOffsets = ["left-0", "left-[calc(34*var(--bu,1px))]", "left-[calc(72*var(--bu,1px))]", "left-[calc(108*var(--bu,1px))]"];
+const badgeText = "text-[max(14px,calc(20*var(--bu,1px)))] leading-[max(1.25em,calc(28*var(--bu,1px)))] tracking-figma";
 
 function TrainersBadge() {
   const { avatars, count, label } = hero.trainers;
   return (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <div className="relative h-14 w-50 shrink-0">
+    <div className="flex items-center gap-x-[calc(12*var(--bu,1px))]">
+      <div className="relative h-[calc(56*var(--bu,1px))] w-[calc(200*var(--bu,1px))] shrink-0">
         {avatars.map((avatar, i) => (
           <Image
             key={avatar.src}
@@ -18,15 +23,16 @@ function TrainersBadge() {
             alt={avatar.alt}
             width={56}
             height={56}
-            className={`absolute top-0 size-14 rounded-full ${avatarOffsets[i]}`}
+            className={`absolute top-0 size-[calc(56*var(--bu,1px))] rounded-full ${avatarOffsets[i]}`}
           />
         ))}
-        <div className="absolute top-0 left-36 grid size-14 place-items-center">
-          <Image src="/decor/avatar-count.svg" alt="" width={56} height={56} className="absolute inset-0" />
-          <span className="relative font-heading text-h6 font-semibold text-grey-700">{count}</span>
+        <div className="absolute top-0 left-[calc(144*var(--bu,1px))] grid size-[calc(56*var(--bu,1px))] place-items-center">
+          <Image src="/decor/avatar-count.svg" alt="" width={56} height={56} className="absolute inset-0 size-full" />
+          <span className={`relative font-heading font-semibold text-grey-700 ${badgeText}`}>{count}</span>
         </div>
       </div>
-      <p className="font-heading text-h6 font-semibold text-white sm:whitespace-nowrap">{label}</p>
+      {/* Phones: two lines ("Experience / Trainers") so the badge fits the narrower cutout. */}
+      <p className={`w-min font-heading font-semibold text-white sm:w-auto sm:whitespace-nowrap ${badgeText}`}>{label}</p>
     </div>
   );
 }
@@ -56,8 +62,12 @@ export function Hero() {
           mask scales uniformly. The image tucks under the headline by (63px − notch height), where
           the notch is 90/1200 = 7.5% of the width: −27px at 1200 (Figma) and less on smaller screens.
         */}
-        <div className="relative mt-8 lg:mt-[calc(15.75*var(--spacing)-7.5%)] lg:aspect-[1200/614] xl:-mt-6.75 xl:h-153.5 xl:aspect-auto">
-          <div className="relative aspect-4/3 overflow-hidden rounded-4xl md:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:mask-hero-notch lg:rounded-none">
+        {/*
+          < 1024: the same notched shape, redrawn for phones (343:360) and tablets (704:520). The
+          container keeps that ratio, so the mask scales uniformly and the curves never stretch.
+        */}
+        <div className="relative mt-8 aspect-[343/360] max-lg:@container sm:aspect-[704/520] lg:mt-[calc(15.75*var(--spacing)-7.5%)] lg:aspect-[1200/614] xl:-mt-6.75 xl:h-153.5 xl:aspect-auto">
+          <div className="absolute inset-0 overflow-hidden mask-hero-notch-mobile sm:mask-hero-notch-tablet lg:mask-hero-notch">
             <Image
               src={hero.image.src}
               alt={hero.image.alt}
@@ -66,11 +76,15 @@ export function Hero() {
               fetchPriority="high"
               sizes="(max-width: 1023px) 100vw, 1200px"
               // Phones/tablets crop the sides: keep both people (right of centre) in frame.
-              className="object-cover object-[64%_40%] lg:object-[50%_8%]"
+              className="object-cover object-[66%_30%] sm:object-[60%_35%] lg:object-[50%_8%]"
             />
           </div>
-          {/* ≥1024 the badge sits in the bottom-right notch (683/1200 from the left, 10/614 from the bottom). */}
-          <div className="mt-6 lg:absolute lg:bottom-[1.63%] lg:left-[56.92%] lg:mt-0 xl:top-137 xl:bottom-auto xl:left-170.75">
+          {/*
+            The badge nests in the bottom-right cutout. < 1024 it fills the cutout's inner box (design
+            units --hu: 1/343 or 1/704 of the image width); ≥ 1024 at 683/1200 from the left and
+            10/614 from the bottom (Figma).
+          */}
+          <div className="absolute right-[calc(12*var(--hu))] bottom-[calc(12*var(--hu))] flex h-[calc(44*var(--hu))] w-[calc(256*var(--hu))] items-center [--bu:calc(0.714*100cqw/343)] [--hu:calc(100cqw/343)] sm:right-[calc(24*var(--hu))] sm:bottom-[calc(16*var(--hu))] sm:h-[calc(56*var(--hu))] sm:w-[calc(409*var(--hu))] sm:[--bu:calc(100cqw/704)] sm:[--hu:calc(100cqw/704)] lg:right-auto lg:bottom-[1.63%] lg:left-[56.92%] lg:block lg:h-auto lg:w-auto lg:[--bu:1px] xl:top-137 xl:bottom-auto xl:left-170.75">
             <TrainersBadge />
           </div>
         </div>

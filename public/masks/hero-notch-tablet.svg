@@ -1,0 +1,8 @@
+<svg width="704" height="520" viewBox="0 0 704 520" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    Tablet version of the Figma hero "Union" (3:2661), designed for a 704×520 image and scaled
+    uniformly (the container keeps this 704:520 ratio). Step: 387 (55%) × 88, 24px curves.
+    Cutout: 457 × 88 — the full-size badge (409 × 56) with 24/16px padding, as on desktop.
+  -->
+  <path d="M704 24A24 24 0 0 0 680 0H411A24 24 0 0 0 387 24V64A24 24 0 0 1 363 88H24A24 24 0 0 0 0 112V496A24 24 0 0 0 24 520H223A24 24 0 0 0 247 496V456A24 24 0 0 1 271 432H680A24 24 0 0 0 704 408Z" fill="#000"/>
+</svg>

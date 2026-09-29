@@ -204,6 +204,36 @@
   mask-repeat: no-repeat;
 }
 
+/* Hero notch below 1024 — same Union shape redrawn per ratio; scaled uniformly (container locks the ratio). */
+@utility mask-hero-notch-mobile {
+  mask-image: url("/masks/hero-notch-mobile.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+@utility mask-hero-notch-tablet {
+  mask-image: url("/masks/hero-notch-tablet.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+/*
+ * CTA notch below 1024: the card height follows its text, so the 96 × 64 star notch is a fixed-size
+ * corner piece anchored bottom-right (curves never stretch); the rest of the card is solid.
+ */
+@utility mask-cta-notch-mobile {
+  mask-image: linear-gradient(#000 0 0), linear-gradient(#000 0 0), url("/masks/cta-notch-mobile.svg");
+  mask-size:
+    100% calc(100% - 88px),
+    calc(100% - 119px) 88px,
+    120px 88px;
+  mask-position:
+    top,
+    left bottom,
+    right bottom;
+  mask-repeat: no-repeat;
+}
+
 @utility mask-cta-notch {
   mask-image: url("/masks/cta-notch.svg");
   mask-size: 100% 100%;
