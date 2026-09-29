@@ -67,7 +67,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
 export function Membership() {
   return (
-    <section id="membership" aria-labelledby="membership-heading" className="scroll-mt-28 pb-20 xl:pb-30">
+    <section id="membership" aria-labelledby="membership-heading" className="scroll-mt-28 pb-section">
       <Container className="flex flex-col items-center gap-14">
         <Reveal>
           <SectionHeading

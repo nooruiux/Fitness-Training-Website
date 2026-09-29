@@ -33,10 +33,10 @@ function TrainersBadge() {
 
 export function Hero() {
   return (
-    <section id="home" aria-labelledby="hero-heading" className="scroll-mt-28 pt-8 pb-20 xl:pt-16 xl:pb-29">
+    <section id="home" aria-labelledby="hero-heading" className="scroll-mt-28 pt-8 pb-section-hero xl:pt-16">
       <Container>
         <div className="relative z-10 flex flex-col gap-6 short:flex-row short:gap-8 xl:flex-row xl:gap-21.75">
-          <h1 id="hero-heading" className="font-display text-h3 font-medium text-white short:w-1/2 short:shrink-0 md:text-display xl:w-142.75">
+          <h1 id="hero-heading" className="font-display text-display font-medium text-white short:w-1/2 short:shrink-0 xl:w-142.75">
             {hero.heading}
           </h1>
           <div className="flex flex-col items-start gap-6 short:min-w-0 short:flex-1 xl:w-115.25 xl:pt-1.5">

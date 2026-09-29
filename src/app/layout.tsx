@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#111212",
   colorScheme: "dark",
+  viewportFit: "cover", // lets env(safe-area-inset-*) report the notch / home-indicator insets
 };
 
 const jsonLd = {

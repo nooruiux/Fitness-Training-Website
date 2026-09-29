@@ -122,11 +122,11 @@ function BookingCard() {
 export function ShapeBody() {
   const { heading, text, cta } = shapeBody;
   return (
-    <section id="class" aria-labelledby="shape-heading" className="scroll-mt-28 pt-20 pb-20 xl:pb-30">
+    <section id="class" aria-labelledby="shape-heading" className="scroll-mt-28 pt-section-sm pb-section">
       <Container className="relative xl:h-177.5">
         <Reveal className="relative flex flex-col items-start gap-8 xl:absolute xl:top-37.25 xl:left-0 xl:w-167.75">
           <div className="flex flex-col gap-4">
-            <h2 id="shape-heading" className="font-display text-h4 font-medium text-white md:text-h3 xl:w-87.5">
+            <h2 id="shape-heading" className="font-display text-h3 font-medium text-white xl:w-87.5">
               {heading.before}
               <span className="text-primary">{heading.highlight}</span>
               {heading.after}

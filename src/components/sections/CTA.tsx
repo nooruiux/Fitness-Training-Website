@@ -6,14 +6,14 @@ import { cta } from "@/data/cta";
 
 export function CTA() {
   return (
-    <section aria-labelledby="cta-heading" className="py-20 xl:py-30">
+    <section aria-labelledby="cta-heading" className="py-section">
       <Container>
         <Reveal className="relative flex flex-col items-center gap-8 overflow-hidden rounded-4xl px-6 pt-10 md:px-12 xl:block xl:h-93 xl:overflow-visible xl:rounded-none xl:p-0">
           <div aria-hidden className="bg-cta-gradient absolute inset-0 xl:mask-cta-notch" />
 
           <div className="relative flex flex-col items-start gap-10 self-stretch xl:absolute xl:top-20.5 xl:left-24">
             <div className="flex flex-col gap-5 text-grey-700">
-              <h2 id="cta-heading" className="font-display text-h4 font-medium md:text-h3 xl:whitespace-nowrap">
+              <h2 id="cta-heading" className="font-display text-h3 font-medium xl:whitespace-nowrap">
                 {cta.heading}
               </h2>
               <p className="text-body-xl xl:w-115.25">{cta.text}</p>

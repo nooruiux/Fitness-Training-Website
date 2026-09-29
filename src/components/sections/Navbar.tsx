@@ -126,7 +126,7 @@ export function Navbar() {
   }, [open, close]);
 
   return (
-    <header className="sticky top-0 z-50 pt-4 xl:pt-6">
+    <header className="sticky top-0 z-50 pt-[max(1rem,env(safe-area-inset-top))] xl:pt-6">
       <Container>
         <nav
           aria-label="Primary"

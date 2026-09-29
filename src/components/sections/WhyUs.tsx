@@ -19,7 +19,7 @@ function FeatureItem({ feature }: { feature: Feature }) {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <h3 className="font-display text-h5 font-medium text-white md:text-h4 xl:whitespace-nowrap">{feature.title}</h3>
+        <h3 className="font-display text-h4 font-medium text-white xl:whitespace-nowrap">{feature.title}</h3>
         <p className={cn("text-body-md text-white/96", feature.textClassName)}>{feature.text}</p>
       </div>
     </li>

@@ -35,7 +35,7 @@ export function SectionHeading({
         id={id}
         className={cn(
           "font-display font-medium text-white",
-          size === "h2" ? "text-h3 md:text-h2" : "text-h4 md:text-h3",
+          size === "h2" ? "text-h2" : "text-h3",
           titleClassName,
         )}
       >
