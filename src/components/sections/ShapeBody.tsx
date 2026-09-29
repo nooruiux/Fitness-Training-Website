@@ -15,9 +15,9 @@ function TrainerCard() {
   return (
     <div
       className={cn(
-        // Below md the notched composition can't fit, so it reflows into a plain rounded card.
+        // Below lg the notched composition reflows into a plain rounded card (no absolute positioning).
         "relative flex flex-col items-center overflow-hidden rounded-4xl border border-white/8 bg-linear-to-b from-transparent to-card-fade pb-6",
-        "md:absolute md:top-0 md:left-31 md:block md:h-165.75 md:w-120 md:overflow-visible md:rounded-none md:border-0 md:bg-none md:pb-0",
+        "lg:absolute lg:top-0 lg:left-31 lg:block lg:h-165.75 lg:w-120 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-none lg:pb-0",
       )}
     >
       <Image
@@ -25,20 +25,20 @@ function TrainerCard() {
         alt=""
         width={480}
         height={620}
-        className="absolute top-10.75 left-0 hidden md:block"
+        className="absolute top-10.75 left-0 hidden lg:block"
       />
-      <div className="relative aspect-448/425 w-full overflow-hidden md:absolute md:top-0 md:left-4 md:h-106.25 md:w-112">
+      <div className="relative aspect-448/425 w-full overflow-hidden lg:absolute lg:top-0 lg:left-4 lg:h-106.25 lg:w-112">
         <Image
           src={trainer.image.src}
           alt={trainer.image.alt}
           width={trainer.image.width}
           height={trainer.image.height}
-          sizes="(min-width: 768px) 587px, 131vw"
+          sizes="(min-width: 1024px) 587px, (min-width: 528px) 629px, 131vw"
           className="absolute top-0 left-[-1.79%] h-full w-[131.03%] max-w-none"
         />
       </div>
 
-      <div className="relative -mt-12 flex items-center gap-6 rounded-full border border-white/12 bg-surface-raised px-6 py-2.5 md:absolute md:top-94.25 md:left-45 md:mt-0">
+      <div className="relative -mt-12 flex items-center gap-6 rounded-full border border-white/12 bg-surface-raised px-6 py-2.5 lg:absolute lg:top-94.25 lg:left-45 lg:mt-0">
         <div className="flex flex-col whitespace-nowrap">
           <p className="font-display text-h6 font-medium text-white">{trainer.name}</p>
           <p className="text-body-sm text-white/72">{trainer.role}</p>
@@ -46,7 +46,7 @@ function TrainerCard() {
         <Image src="/icons/target.svg" alt="" width={40} height={40} />
       </div>
 
-      <ul className="relative mt-11.5 flex items-center justify-center gap-10 md:absolute md:top-123.75 md:left-45 md:mt-0">
+      <ul className="relative mt-11.5 flex items-center justify-center gap-10 lg:absolute lg:top-123.75 lg:left-45 lg:mt-0">
         {stats.map((stat, i) => (
           <li key={stat.label} className="flex items-center gap-10">
             {i > 0 ? (
@@ -68,7 +68,7 @@ function TrainerCard() {
         ))}
       </ul>
 
-      <Toggle label={toggleLabel} className="relative mt-8 md:absolute md:top-155.75 md:left-51.25 md:mt-0" />
+      <Toggle label={toggleLabel} className="relative mt-8 lg:absolute lg:top-155.75 lg:left-51.25 lg:mt-0" />
     </div>
   );
 }
@@ -78,10 +78,10 @@ function BookingCard() {
   const [selected, setSelected] = useState(booking.defaultOption);
 
   return (
-    <Card className="relative mt-6 flex flex-col gap-4 p-4 md:absolute md:top-88.25 md:left-0 md:mt-0 md:w-60.25">
+    <Card className="relative mt-6 flex flex-col gap-4 p-4 lg:absolute lg:top-88.25 lg:left-0 lg:mt-0 lg:w-60.25">
       <div className="flex flex-col gap-1">
         <h3 className="font-display text-card-title font-medium text-neutral-8">{booking.title}</h3>
-        <p className="text-body-sm text-white/72 md:w-46.5">{booking.text}</p>
+        <p className="text-body-sm text-white/72 lg:w-46.5">{booking.text}</p>
       </div>
       <fieldset className="flex flex-col gap-4">
         <legend className="sr-only">Choose a class level</legend>
@@ -109,7 +109,7 @@ function BookingCard() {
               </span>
               <span className="flex flex-col gap-1">
                 <span className="text-label-md font-medium whitespace-nowrap text-neutral-8">{option.title}</span>
-                <span className="text-body-sm text-white/72 md:w-38.75">{option.text}</span>
+                <span className="text-body-sm text-white/72 lg:w-38.75">{option.text}</span>
               </span>
             </label>
           );
@@ -145,7 +145,7 @@ export function ShapeBody() {
           </Button>
         </Reveal>
 
-        <Reveal className="relative mx-auto mt-16 max-w-120 md:h-177.5 md:w-151 md:max-w-none xl:absolute xl:top-0 xl:left-154.5 xl:mt-0">
+        <Reveal className="relative mx-auto mt-16 max-w-120 lg:h-177.5 lg:w-151 lg:max-w-none xl:absolute xl:top-0 xl:left-154.5 xl:mt-0">
           <TrainerCard />
           <BookingCard />
         </Reveal>
