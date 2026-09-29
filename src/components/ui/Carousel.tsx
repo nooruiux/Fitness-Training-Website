@@ -31,7 +31,8 @@ function ArrowButton({
       disabled={disabled}
       aria-label={direction === "prev" ? "Previous testimonial" : "Next testimonial"}
       className={cn(
-        "group grid size-10 shrink-0 cursor-pointer place-items-center rounded-arrow disabled:cursor-not-allowed",
+        // Hidden below md: phones swipe and use the dots.
+        "group hidden size-10 shrink-0 cursor-pointer place-items-center rounded-arrow disabled:cursor-not-allowed md:grid",
         direction === "next" && "rotate-180",
       )}
     >
@@ -86,7 +87,7 @@ export function Carousel({ label, slides, className, slideClassName }: CarouselP
 
   return (
     <section aria-roledescription="carousel" aria-label={label} className={cn("flex flex-col items-center gap-14", className)}>
-      <div className="flex w-full items-center gap-2 md:gap-5.75">
+      <div className="flex w-full items-center md:gap-5.75">
         <ArrowButton direction="prev" disabled={!canPrev} onClick={() => api?.scrollPrev()} />
         <div
           ref={viewportRef}
@@ -111,7 +112,8 @@ export function Carousel({ label, slides, className, slideClassName }: CarouselP
         <ArrowButton direction="next" disabled={!canNext} onClick={() => api?.scrollNext()} />
       </div>
 
-      <div className="flex gap-2" role="group" aria-label="Choose slide">
+      {/* Dots are 44px apart below xl so their 44px tap areas never overlap; Figma's 8px gap at xl. */}
+      <div className="flex gap-8 xl:gap-2" role="group" aria-label="Choose slide">
         {snaps.map((_, i) => (
           <button
             key={i}
